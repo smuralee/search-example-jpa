@@ -1,6 +1,15 @@
 spring:
   jpa:
     show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:h2:mem:search
+    username: sa
+    password:
+    schema: classpath:schema-h2.sql
+    data: classpath:data-h2.sql
   h2:
     console:
       enabled: true
