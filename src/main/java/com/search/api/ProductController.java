@@ -16,13 +16,13 @@ public class ProductController {
 
     /**
      * <p>
-     *     Returns all the products
+     * Returns all the products
      * </p>
      *
      * @return the list of products
      */
     @GetMapping("/products")
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
         return this.repository.findAll();
     }
 }

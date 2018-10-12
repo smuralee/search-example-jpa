@@ -8,8 +8,9 @@ public interface Search {
 
     /**
      * <p>
-     *     Returns the search results based on the search criteria
+     * Returns the search results based on the search criteria
      * </p>
+     *
      * @param searchRequest - Search criteria provided by the user
      * @return List<SearchRequest> - Search results for the criteria
      */
