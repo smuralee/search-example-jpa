@@ -1,11 +1,14 @@
 package com.search.persistence.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUCT")
+@Data
 public class Product implements Serializable {
 
     @Id
@@ -16,29 +19,6 @@ public class Product implements Serializable {
     private String description;
 
     @NotNull
-    private String owner;
+    private String manufacturer;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
 }

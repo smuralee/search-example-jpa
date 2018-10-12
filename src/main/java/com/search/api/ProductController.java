@@ -14,6 +14,13 @@ public class ProductController {
     @Autowired
     private ProductRepository repository;
 
+    /**
+     * <p>
+     *     Returns all the products
+     * </p>
+     *
+     * @return the list of products
+     */
     @GetMapping("/products")
     public List<Product> getProducts(){
         return this.repository.findAll();
