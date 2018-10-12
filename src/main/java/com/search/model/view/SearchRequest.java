@@ -11,4 +11,7 @@ public class SearchRequest {
     private String productManufacturer;
     private List<Integer> productLineIds;
     private List<Integer> regionIds;
+
+    private String sortProperty;
+    private String sortDirection;
 }
