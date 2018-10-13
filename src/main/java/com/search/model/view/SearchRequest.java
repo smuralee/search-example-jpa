@@ -1,5 +1,6 @@
 package com.search.model.view;
 
+import com.search.model.domain.SearchSort;
 import lombok.Value;
 
 import java.util.List;
@@ -12,6 +13,5 @@ public class SearchRequest {
     private List<Integer> productLineIds;
     private List<Integer> regionIds;
 
-    private String sortProperty;
-    private String sortDirection;
+    private List<SearchSort> sortProperties;
 }
