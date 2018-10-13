@@ -34,6 +34,11 @@ public class ProductController {
         return this.repository.findAll();
     }
 
+    @GetMapping("/find")
+    public SearchResponse testSearch(){
+        return this.searchByCriteria(null);
+    }
+
     /**
      * <p>
      *     Returns the search result as per the search criteria
@@ -42,7 +47,7 @@ public class ProductController {
      * @return the search results
      */
     @PostMapping("/search")
-    public List<SearchResponse> searchByCriteria(@RequestBody SearchRequest searchRequest){
+    public SearchResponse searchByCriteria(@RequestBody SearchRequest searchRequest){
         return this.search.getSearchResults(searchRequest);
     }
 }

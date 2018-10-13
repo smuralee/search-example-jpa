@@ -13,7 +13,7 @@ public interface Search {
      * </p>
      *
      * @param searchRequest - Search criteria provided by the user
-     * @return List<SearchResponse> - Search results for the criteria
+     * @return SearchResponse - Search results for the criteria
      */
-    List<SearchResponse> getSearchResults(final SearchRequest searchRequest);
+    SearchResponse getSearchResults(final SearchRequest searchRequest);
 }

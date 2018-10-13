@@ -1,6 +1,6 @@
 package com.search.model.view;
 
-import com.search.model.domain.Product;
+import com.search.persistence.entities.Product;
 import lombok.Value;
 
 import java.util.List;
