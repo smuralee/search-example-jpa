@@ -8,14 +8,7 @@ import com.search.persistence.entities.Product;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
-public class ProductManufacturerProcessor implements SearchCriteriaChain<Product> {
-
-    private SearchCriteriaChain<Product> chain;
-
-    @Override
-    public void setNextChain(SearchCriteriaChain<Product> chain) {
-        this.chain = chain;
-    }
+public class ProductManufacturerProcessor extends SearchCriteriaChain<Product> {
 
     @Override
     public void applyPredicate(PredicateBuilder<Product> builder) {

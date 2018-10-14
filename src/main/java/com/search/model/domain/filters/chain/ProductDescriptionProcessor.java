@@ -8,14 +8,7 @@ import com.search.persistence.entities.Product;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
-public class ProductDescriptionProcessor implements SearchCriteriaChain<Product> {
-
-    private SearchCriteriaChain<Product> chain;
-
-    @Override
-    public void setNextChain(SearchCriteriaChain<Product> chain) {
-        this.chain = chain;
-    }
+public class ProductDescriptionProcessor extends SearchCriteriaChain<Product> {
 
     @Override
     public void applyPredicate(PredicateBuilder<Product> builder) {
@@ -25,7 +18,5 @@ public class ProductDescriptionProcessor implements SearchCriteriaChain<Product>
             builder.addEntityPredicate((new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, builder.getEntityRoot())));
             builder.addCountPredicate(new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, builder.getCountRoot()));
         }
-
-        this.chain.applyPredicate(builder);
     }
 }

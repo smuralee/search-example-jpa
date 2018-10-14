@@ -21,7 +21,7 @@ public class ProductFilterChain {
     }
 
     public void applyPredicates(PredicateBuilder<Product> builder) {
-        this.step1.applyPredicate(builder);
+        this.step1.apply(builder);
     }
 
 
