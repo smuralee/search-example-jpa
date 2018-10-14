@@ -24,4 +24,8 @@ public class SearchRequest implements ViewModel {
     private List<Integer> regionIds;
 
     private List<SortCriteria> sortList;
+
+    private Integer pageNumber;
+
+    private Integer pageSize;
 }

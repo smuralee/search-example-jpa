@@ -13,4 +13,5 @@ import java.util.List;
 @Value
 public class SearchResponse implements ViewModel {
     private List<Product> products;
+    private Long totalCount;
 }
