@@ -22,7 +22,7 @@ public class ProductLine implements Serializable {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID", nullable = false)
+    @JoinColumn(name = "PRODUCT_ID", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Product product;
