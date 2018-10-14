@@ -20,7 +20,7 @@ public class ProductFilterChain {
         step2.setNextChain(step3);
     }
 
-    public void applyPredicates(PredicateBuilder<Product> builder){
+    public void applyPredicates(PredicateBuilder<Product> builder) {
         this.step1.applyPredicate(builder);
     }
 

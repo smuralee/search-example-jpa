@@ -1,7 +1,5 @@
 package com.search.services;
 
-import com.search.model.domain.filters.ProductDescriptionFilter;
-import com.search.model.domain.filters.ProductManufacturerFilter;
 import com.search.model.domain.filters.chain.ProductFilterChain;
 import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.view.SearchRequest;

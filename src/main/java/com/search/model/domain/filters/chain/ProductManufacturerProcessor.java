@@ -25,7 +25,5 @@ public class ProductManufacturerProcessor implements SearchCriteriaChain<Product
             builder.addEntityPredicate((new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, builder.getEntityRoot())));
             builder.addCountPredicate(new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, builder.getCountRoot()));
         }
-
-        this.chain.applyPredicate(builder);
     }
 }

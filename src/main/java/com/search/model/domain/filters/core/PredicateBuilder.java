@@ -105,21 +105,23 @@ public class PredicateBuilder<T> {
 
     /**
      * <p>
-     *     Add the entity predicate
+     * Add the entity predicate
      * </p>
+     *
      * @param predicate - Entity root restriction/ predicate
      */
-    public void addEntityPredicate(final Predicate predicate){
+    public void addEntityPredicate(final Predicate predicate) {
         this.getEntityPredicates().add(predicate);
     }
 
     /**
      * <p>
-     *     Add the count predicate
+     * Add the count predicate
      * </p>
+     *
      * @param predicate - Count root restriction/ predicate
      */
-    public void addCountPredicate(final Predicate predicate){
+    public void addCountPredicate(final Predicate predicate) {
         this.getCountPredicates().add(predicate);
     }
 
