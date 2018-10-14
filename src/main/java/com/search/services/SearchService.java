@@ -1,8 +1,9 @@
 package com.search.services;
 
 import com.search.model.domain.filters.ProductDescriptionFilter;
-import com.search.model.domain.filters.ProductIdFilter;
 import com.search.model.domain.filters.ProductManufacturerFilter;
+import com.search.model.domain.filters.chain.ProductFilterChain;
+import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 import com.search.persistence.entities.Product;
@@ -39,25 +40,27 @@ public class SearchService implements Search {
         final CriteriaQuery<Long> countCriteriaQuery = criteriaBuilder.createQuery(Long.class);
         final Root<Product> countRoot = countCriteriaQuery.from(Product.class);
 
-        // Get all the predicates for applying the restrictions
+        // Empty predicate list for applying the restrictions
         List<Predicate> entityPredicates = new ArrayList<>();
         List<Predicate> countPredicates = new ArrayList<>();
 
-        if (null != searchRequest.getProductId()) {
-            entityPredicates.add(new ProductIdFilter(searchRequest).apply(criteriaBuilder, entityRoot));
-            countPredicates.add(new ProductIdFilter(searchRequest).apply(criteriaBuilder, countRoot));
-        }
-        if (null != searchRequest.getProductDescription()) {
-            entityPredicates.add(new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, entityRoot));
-            countPredicates.add(new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, countRoot));
-        }
-        if (null != searchRequest.getProductManufacturer()) {
-            entityPredicates.add(new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, entityRoot));
-            countPredicates.add(new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, countRoot));
-        }
+        // Create the builder for applying the predicates
+        PredicateBuilder<Product> predicateBuilder = new PredicateBuilder<>();
+        predicateBuilder
+                .forSearchOf(searchRequest)
+                .withCriteriaBuilder(criteriaBuilder)
+                .havingEntityRootOf(entityRoot)
+                .andEntityPredicateListOf(entityPredicates)
+                .havingCountRootOf(countRoot)
+                .andCountPredicateListOf(countPredicates);
 
-        Predicate entityPredicate = criteriaBuilder.and(entityPredicates.toArray(new Predicate[PrimitiveConstants.ZERO]));
-        Predicate countPredicate = criteriaBuilder.and(countPredicates.toArray(new Predicate[PrimitiveConstants.ZERO]));
+        // Applying the predicates
+        ProductFilterChain chain = new ProductFilterChain();
+        chain.applyPredicates(predicateBuilder);
+
+        // Fetch the predicates
+        Predicate entityPredicate = criteriaBuilder.and(predicateBuilder.getEntityPredicates().toArray(new Predicate[PrimitiveConstants.ZERO]));
+        Predicate countPredicate = criteriaBuilder.and(predicateBuilder.getCountPredicates().toArray(new Predicate[PrimitiveConstants.ZERO]));
 
         // Passing the predicates for entity query
         entityCriteriaQuery.select(entityRoot).where(entityPredicate);
