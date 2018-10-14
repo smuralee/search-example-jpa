@@ -1,6 +1,8 @@
 package com.search.services;
 
+import com.search.model.domain.filters.ProductDescriptionFilter;
 import com.search.model.domain.filters.ProductIdFilter;
+import com.search.model.domain.filters.ProductManufacturerFilter;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 import com.search.persistence.entities.Product;
@@ -31,8 +33,12 @@ public class SearchService implements Search {
         final Root<Product> root = criteriaQuery.from(Product.class);
 
         // Get all the predicates for applying the restrictions
-        List<Predicate> predicates = Arrays.asList(new ProductIdFilter(searchRequest).apply(criteriaBuilder, root));
-        Predicate predicate = criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
+        List<Predicate> predicates = Arrays.asList(
+                new ProductIdFilter(searchRequest).apply(criteriaBuilder, root),
+                new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, root),
+                new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, root)
+        );
+        Predicate predicate = criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 
         // Passing the predicates
         criteriaQuery.select(root).where(predicate);
@@ -40,8 +46,7 @@ public class SearchService implements Search {
         // Query execution
         final TypedQuery<Product> query = this.entityManager.createQuery(criteriaQuery);
         final List<Product> resultList = query.getResultList();
-        final SearchResponse response = new SearchResponse(resultList);
-        return response;
+        return new SearchResponse(resultList);
     }
 
 }
