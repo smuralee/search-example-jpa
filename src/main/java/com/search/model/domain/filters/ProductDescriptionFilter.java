@@ -19,7 +19,7 @@ public class ProductDescriptionFilter extends LikeCriteriaFilter<Product> {
     protected String getMatchPattern() {
         final String productDescription = ((SearchRequest) this.request).getProductDescription();
         StringBuilder stringBuilder = new StringBuilder(StringConstants.LIKE_PREFIX);
-        stringBuilder.append(productDescription);
+        stringBuilder.append(productDescription.toLowerCase());
         stringBuilder.append(StringConstants.LIKE_PREFIX);
         return stringBuilder.toString();
     }

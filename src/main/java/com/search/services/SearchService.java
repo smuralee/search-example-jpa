@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,11 +33,18 @@ public class SearchService implements Search {
         final Root<Product> root = criteriaQuery.from(Product.class);
 
         // Get all the predicates for applying the restrictions
-        List<Predicate> predicates = Arrays.asList(
-                new ProductIdFilter(searchRequest).apply(criteriaBuilder, root),
-                new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, root),
-                new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, root)
-        );
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (null != searchRequest.getProductId()) {
+            predicates.add(new ProductIdFilter(searchRequest).apply(criteriaBuilder, root));
+        }
+        if (null != searchRequest.getProductDescription()) {
+            predicates.add(new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, root));
+        }
+        if (null != searchRequest.getProductManufacturer()) {
+            predicates.add(new ProductManufacturerFilter(searchRequest).apply(criteriaBuilder, root));
+        }
+
         Predicate predicate = criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 
         // Passing the predicates
