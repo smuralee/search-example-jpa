@@ -1,6 +1,5 @@
 package com.search.model.view;
 
-import com.search.model.domain.SortCriteria;
 import lombok.Value;
 
 import javax.validation.constraints.NotNull;
@@ -23,8 +22,6 @@ public class SearchRequest implements ViewModel {
     private List<Integer> productLineIds;
 
     private List<Integer> regionIds;
-
-    private List<SortCriteria> sortList;
 
     @NotNull
     private Integer pageNumber;

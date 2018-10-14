@@ -9,7 +9,7 @@ package com.search.model.domain.filters.core;
  */
 public abstract class SearchCriteriaChain<T> {
 
-    private SearchCriteriaChain<T> searchCriteriaChain;
+    private SearchCriteriaChain<T> chain;
 
     /**
      * <p>
@@ -19,7 +19,7 @@ public abstract class SearchCriteriaChain<T> {
      * @param chain - Next step in the chain
      */
     public void setNextChain(final SearchCriteriaChain<T> chain) {
-        this.searchCriteriaChain = chain;
+        this.chain = chain;
     }
 
     /**
@@ -31,8 +31,8 @@ public abstract class SearchCriteriaChain<T> {
      */
     public void apply(final PredicateBuilder<T> builder) {
         this.applyPredicate(builder);
-        if (null != searchCriteriaChain) {
-            this.searchCriteriaChain.apply(builder);
+        if (null != chain) {
+            this.chain.apply(builder);
         }
     }
 

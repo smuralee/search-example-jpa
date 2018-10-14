@@ -1,6 +1,7 @@
 package com.search.model.domain.filters.core;
 
 import com.search.model.view.ViewModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,6 +17,7 @@ import java.util.List;
  * @param <T> - Entity type to be queried
  */
 @Getter
+@AllArgsConstructor
 public class PredicateBuilder<T> {
 
     private ViewModel viewModel;
