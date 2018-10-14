@@ -3,8 +3,6 @@ package com.search.services;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 
-import java.util.List;
-
 public interface Search {
 
     /**

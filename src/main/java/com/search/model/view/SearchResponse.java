@@ -6,6 +6,6 @@ import lombok.Value;
 import java.util.List;
 
 @Value
-public class SearchResponse {
+public class SearchResponse implements ViewModel {
     private List<Product> products;
 }

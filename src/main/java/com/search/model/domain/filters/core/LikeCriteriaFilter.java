@@ -8,7 +8,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-public class LikeCriteriaFilter<T> implements CriteriaFilter<T> {
+public abstract class LikeCriteriaFilter<T> implements CriteriaFilter<T> {
 
     @Override
     public Predicate apply(CriteriaBuilder criteriaBuilder, Root<T> root) {

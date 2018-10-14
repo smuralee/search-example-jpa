@@ -31,7 +31,7 @@ public class SearchService implements Search {
         final Root<Product> root = criteriaQuery.from(Product.class);
 
         // Get all the predicates for applying the restrictions
-        List<Predicate> predicates = Arrays.asList(new ProductIdFilter().apply(criteriaBuilder, root));
+        List<Predicate> predicates = Arrays.asList(new ProductIdFilter(searchRequest).apply(criteriaBuilder, root));
         Predicate predicate = criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
 
         // Passing the predicates
