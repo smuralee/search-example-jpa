@@ -5,6 +5,7 @@ import com.search.model.domain.filters.core.EqualCriteriaFilter;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.ViewModel;
 import com.search.persistence.entities.Product;
+import com.search.util.StringConstants;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.criteria.Expression;
@@ -22,6 +23,6 @@ public class ProductIdFilter extends EqualCriteriaFilter<Product, Integer>{
 
     @Override
     protected Expression<Integer> getEqualityAttribute(Root<Product> root) {
-        return root.get("id");
+        return root.get(StringConstants.PRODUCT_ID);
     }
 }
