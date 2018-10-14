@@ -8,6 +8,11 @@ import com.search.persistence.entities.Product;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
+/**
+ * <p>
+ * Applies the product description filter
+ * </p>
+ */
 public class ProductDescriptionProcessor extends SearchCriteriaChain<Product> {
 
     @Override
