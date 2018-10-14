@@ -12,7 +12,7 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
-public class ProductIdFilter extends EqualCriteriaFilter<Product, Integer>{
+public class ProductIdFilter extends EqualCriteriaFilter<Product, Integer> {
 
     private ViewModel request;
 

@@ -10,8 +10,6 @@ public class SearchRequest implements ViewModel {
 
     private Integer productId;
 
-    private String productName;
-
     private String productDescription;
 
     private String productManufacturer;

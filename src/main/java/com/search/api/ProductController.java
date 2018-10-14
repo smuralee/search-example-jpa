@@ -36,13 +36,14 @@ public class ProductController {
 
     /**
      * <p>
-     *     Returns the search result as per the search criteria
+     * Returns the search result as per the search criteria
      * </p>
+     *
      * @param searchRequest - search criteria from user
      * @return the search results
      */
     @PostMapping("/search")
-    public SearchResponse searchByCriteria(@RequestBody SearchRequest searchRequest){
+    public SearchResponse searchByCriteria(@RequestBody SearchRequest searchRequest) {
         return this.search.getSearchResults(searchRequest);
     }
 }
