@@ -3,6 +3,7 @@ package com.search.model.view;
 import com.search.model.domain.SortCriteria;
 import lombok.Value;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -25,7 +26,9 @@ public class SearchRequest implements ViewModel {
 
     private List<SortCriteria> sortList;
 
+    @NotNull
     private Integer pageNumber;
 
+    @NotNull
     private Integer pageSize;
 }

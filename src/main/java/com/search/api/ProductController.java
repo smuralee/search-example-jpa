@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,7 +44,7 @@ public class ProductController {
      * @return the search results for the criteria
      */
     @PostMapping("/search")
-    public SearchResponse searchByCriteria(@RequestBody SearchRequest searchRequest) {
+    public SearchResponse searchByCriteria(@Valid @RequestBody SearchRequest searchRequest) {
         return this.search.getSearchResults(searchRequest);
     }
 }
