@@ -9,7 +9,7 @@ import javax.persistence.criteria.Root;
  * Applying the predicates for criteria
  * </p>
  *
- * @param <T>
+ * @param <T> - Entity where the criteria has to be applied
  */
 @FunctionalInterface
 public interface CriteriaFilter<T> {
@@ -20,7 +20,7 @@ public interface CriteriaFilter<T> {
      *
      * @param criteriaBuilder - Criteria builder
      * @param root            - Root object
-     * @return Predicate
+     * @return Predicate for the criteria type
      */
     Predicate apply(final CriteriaBuilder criteriaBuilder, final Root<T> root);
 }

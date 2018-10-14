@@ -5,6 +5,11 @@ import lombok.Value;
 
 import java.util.List;
 
+/**
+ * <p>
+ * Value object to hold the incoming request body for the search
+ * </p>
+ */
 @Value
 public class SearchRequest implements ViewModel {
 

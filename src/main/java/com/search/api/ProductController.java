@@ -40,7 +40,7 @@ public class ProductController {
      * </p>
      *
      * @param searchRequest - search criteria from user
-     * @return the search results
+     * @return the search results for the criteria
      */
     @PostMapping("/search")
     public SearchResponse searchByCriteria(@RequestBody SearchRequest searchRequest) {

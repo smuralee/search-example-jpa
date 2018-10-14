@@ -23,6 +23,6 @@ public class ProductIdFilter extends EqualCriteriaFilter<Product, Integer> {
 
     @Override
     protected Expression<Integer> getEqualityAttribute(Root<Product> root) {
-        return root.get(StringConstants.PRODUCT_ID);
+        return root.get(StringConstants.ID);
     }
 }
