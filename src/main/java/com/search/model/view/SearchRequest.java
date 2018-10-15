@@ -19,7 +19,7 @@ public class SearchRequest implements ViewModel {
 
     private String productManufacturer;
 
-    private List<Integer> productLineIds;
+    private List<Integer> supplyChainIds;
 
     private List<Integer> regionIds;
 

@@ -7,9 +7,9 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "REGION")
+@Table(name = "SUPPLY_CHAIN")
 @Data
-public class Region implements Serializable {
+public class SupplyChain implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
