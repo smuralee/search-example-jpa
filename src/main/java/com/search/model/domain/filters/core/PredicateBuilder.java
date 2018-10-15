@@ -3,6 +3,7 @@ package com.search.model.domain.filters.core;
 import com.search.model.view.ViewModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class PredicateBuilder<T> {
 
     private ViewModel viewModel;
