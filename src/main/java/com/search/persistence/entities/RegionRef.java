@@ -1,13 +1,12 @@
 package com.search.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "REGION")
+@Table(name = "REGION_REF")
 @Data
 public class RegionRef implements Serializable {
 
@@ -17,12 +16,10 @@ public class RegionRef implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "REGION_ID", nullable = false)
-    @JsonIgnore
     private Region region;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
-    @JsonIgnore
     private Product product;
 
 }
