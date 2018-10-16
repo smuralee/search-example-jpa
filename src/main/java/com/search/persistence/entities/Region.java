@@ -2,12 +2,12 @@ package com.search.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "REGION")
@@ -21,10 +21,8 @@ public class Region implements Serializable {
     @NotNull
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "region", cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Product product;
+    private Set<RegionRef> regionRefs = new HashSet<>();
 
 }
