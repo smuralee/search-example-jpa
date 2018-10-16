@@ -14,12 +14,12 @@ public class RegionRef implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "REGION_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "REGION_ID")
     private Region region;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
 }

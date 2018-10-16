@@ -21,7 +21,7 @@ public class SupplyChain implements Serializable {
     @NotNull
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "supplyChain", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany(mappedBy = "supplyChain", cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<SupplyChainRef> supplyChainRefs = new HashSet<>();
 

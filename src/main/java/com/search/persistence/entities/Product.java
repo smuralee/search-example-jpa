@@ -24,11 +24,11 @@ public class Product implements Serializable {
     @NotNull
     private String manufacturer;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<SupplyChainRef> supplyChainRefs = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<RegionRef> regionRefs = new HashSet<>();
 

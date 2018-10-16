@@ -21,7 +21,7 @@ public class Region implements Serializable {
     @NotNull
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "region", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany(mappedBy = "region", cascade = {CascadeType.ALL})
     @JsonIgnore
     private Set<RegionRef> regionRefs = new HashSet<>();
 

@@ -14,12 +14,12 @@ public class SupplyChainRef implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "SUPPLY_CHAIN_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "SUPPLY_CHAIN_ID")
     private SupplyChain supplyChain;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PRODUCT_ID", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 
 }
