@@ -24,12 +24,22 @@ public class Product implements Serializable {
     @NotNull
     private String manufacturer;
 
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Set<SupplyChainRef> supplyChainRefs = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.ALL})
+            @JoinTable(
+                    name = "REGION_REF",
+                    joinColumns = {@JoinColumn(name = "PRODUCT_ID")},
+                    inverseJoinColumns = {@JoinColumn(name = "REGION_ID")}
+            )
+    Set<Region> regions = new HashSet<>();
 
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     @JsonIgnore
-    private Set<RegionRef> regionRefs = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "SUPPLY_CHAIN_REF",
+            joinColumns = {@JoinColumn(name = "PRODUCT_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "SUPPLY_CHAIN_ID")}
+    )
+    Set<SupplyChain> supplyChains = new HashSet<>();
 
 }

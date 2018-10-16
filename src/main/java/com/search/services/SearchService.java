@@ -6,7 +6,6 @@ import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 import com.search.persistence.entities.Product;
 import com.search.persistence.entities.SupplyChain;
-import com.search.persistence.entities.SupplyChainRef;
 import com.search.util.PrimitiveConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,11 +55,11 @@ public class SearchService implements Search {
         chain.applyPredicates(predicateBuilder);
 
         //FIXME: Apply the design pattern to join of the tables
-        final Join<Product, SupplyChainRef> supplyChainRefEntity = entityRoot.join("supplyChainRefs", JoinType.LEFT);
-        final Predicate entityRef = supplyChainRefEntity.get("supplyChain").get("id").in(searchRequest.getSupplyChainIds());
+        final Join<Product, SupplyChain> supplyChainEntity = entityRoot.join("supplyChains");
+        final Predicate entityRef = supplyChainEntity.get("id").in(searchRequest.getSupplyChainIds());
 
-        final Join<Product, SupplyChainRef> supplyChainRefCount = countRoot.join("supplyChainRefs", JoinType.LEFT);
-        final Predicate countRef = supplyChainRefCount.get("supplyChain").get("id").in(searchRequest.getSupplyChainIds());
+        final Join<Product, SupplyChain> supplyChainCount = countRoot.join("supplyChains");
+        final Predicate countRef = supplyChainCount.get("id").in(searchRequest.getSupplyChainIds());
 
         predicateBuilder.getEntityPredicates().add(entityRef);
         predicateBuilder.getCountPredicates().add(countRef);

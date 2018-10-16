@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "SUPPLY_CHAIN")
@@ -17,5 +19,8 @@ public class SupplyChain implements Serializable {
 
     @NotNull
     private String description;
+
+    @ManyToMany(mappedBy = "supplyChains")
+    private Set<Product> products = new HashSet<>();
 
 }
