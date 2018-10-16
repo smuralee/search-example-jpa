@@ -5,16 +5,15 @@ import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 import com.search.persistence.entities.Product;
+import com.search.persistence.entities.SupplyChain;
+import com.search.persistence.entities.SupplyChainRef;
 import com.search.util.PrimitiveConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +54,16 @@ public class SearchService implements Search {
         // Applying the predicates
         ProductFilterChain chain = new ProductFilterChain();
         chain.applyPredicates(predicateBuilder);
+
+        //FIXME: Apply the design pattern to join of the tables
+        final Join<Product, SupplyChainRef> supplyChainRefEntity = entityRoot.join("supplyChainRefs", JoinType.LEFT);
+        final Predicate entityRef = supplyChainRefEntity.get("supplyChain").get("id").in(searchRequest.getSupplyChainIds());
+
+        final Join<Product, SupplyChainRef> supplyChainRefCount = countRoot.join("supplyChainRefs", JoinType.LEFT);
+        final Predicate countRef = supplyChainRefCount.get("supplyChain").get("id").in(searchRequest.getSupplyChainIds());
+
+        predicateBuilder.getEntityPredicates().add(entityRef);
+        predicateBuilder.getCountPredicates().add(countRef);
 
         // Fetch the predicates
         Predicate entityPredicate = criteriaBuilder.and(predicateBuilder.getEntityPredicates().toArray(new Predicate[PrimitiveConstants.ZERO]));
