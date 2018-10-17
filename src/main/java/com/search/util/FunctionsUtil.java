@@ -13,24 +13,19 @@ import java.util.stream.Collectors;
 
 public final class FunctionsUtil {
 
-    private FunctionsUtil() {
-    }
-
     private static Function<Region, Location> getLocation = region -> {
         Location location = new Location();
         location.setId(region.getId());
         location.setName(region.getName());
         return location;
     };
-
-    private  static Function<SupplyChain, Supplier> getSupplier = supplyChain -> {
+    private static Function<SupplyChain, Supplier> getSupplier = supplyChain -> {
         Supplier supplier = new Supplier();
         supplier.setId(supplyChain.getId());
         supplier.setName(supplyChain.getName());
         return supplier;
     };
-
-    public  static Function<Product, Item> getItem = product -> {
+    public static Function<Product, Item> getItem = product -> {
         Item item = new Item();
         item.setId(product.getId());
         item.setName(product.getName());
@@ -54,7 +49,8 @@ public final class FunctionsUtil {
         return item;
     };
 
-
+    private FunctionsUtil() {
+    }
 
 
 }
