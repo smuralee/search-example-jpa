@@ -1,6 +1,5 @@
 package com.search.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,8 +20,7 @@ public class SupplyChain implements Serializable {
     @NotNull
     private String description;
 
-    @OneToMany(mappedBy = "supplyChain", cascade = {CascadeType.ALL})
-    @JsonIgnore
-    private Set<SupplyChainRef> supplyChainRefs = new HashSet<>();
+    @ManyToMany(mappedBy = "supplyChains")
+    private Set<Product> products = new HashSet<>();
 
 }

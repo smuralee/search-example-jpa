@@ -1,6 +1,5 @@
 package com.search.persistence.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,8 +20,7 @@ public class Region implements Serializable {
     @NotNull
     private String description;
 
-    @OneToMany(mappedBy = "region", cascade = {CascadeType.ALL})
-    @JsonIgnore
-    private Set<RegionRef> regionRefs = new HashSet<>();
+    @ManyToMany(mappedBy = "regions")
+    private Set<Product> products = new HashSet<>();
 
 }
