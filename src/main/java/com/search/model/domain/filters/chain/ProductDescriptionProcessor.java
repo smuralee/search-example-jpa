@@ -1,6 +1,6 @@
 package com.search.model.domain.filters.chain;
 
-import com.search.model.domain.filters.ProductDescriptionFilter;
+import com.search.model.domain.filters.ItemNameFilter;
 import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.domain.filters.core.SearchCriteriaChain;
 import com.search.model.view.SearchRequest;
@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * <p>
- * Applies the product description filter
+ * Applies the product name filter
  * </p>
  */
 public class ProductDescriptionProcessor extends SearchCriteriaChain<Product> {
@@ -19,9 +19,9 @@ public class ProductDescriptionProcessor extends SearchCriteriaChain<Product> {
     public void applyPredicate(PredicateBuilder<Product> builder) {
         final SearchRequest searchRequest = (SearchRequest) builder.getViewModel();
         final CriteriaBuilder criteriaBuilder = builder.getCriteriaBuilder();
-        if (null != searchRequest.getProductDescription()) {
-            builder.addEntityPredicate((new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, builder.getEntityRoot())));
-            builder.addCountPredicate(new ProductDescriptionFilter(searchRequest).apply(criteriaBuilder, builder.getCountRoot()));
+        if (null != searchRequest.getItemName()) {
+            builder.addEntityPredicate((new ItemNameFilter(searchRequest).apply(criteriaBuilder, builder.getEntityRoot())));
+            builder.addCountPredicate(new ItemNameFilter(searchRequest).apply(criteriaBuilder, builder.getCountRoot()));
         }
     }
 }

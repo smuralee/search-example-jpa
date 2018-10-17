@@ -16,7 +16,7 @@ public class Region implements Serializable {
     private Integer id;
 
     @NotNull
-    private String description;
+    private String name;
 
     @ManyToMany(mappedBy = "regions")
     private Set<Product> products = new HashSet<>();
@@ -29,12 +29,12 @@ public class Region implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<Product> getProducts() {
@@ -62,7 +62,7 @@ public class Region implements Serializable {
     public String toString() {
         return "Region{" +
                 "id=" + id +
-                ", description='" + description + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

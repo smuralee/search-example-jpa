@@ -13,6 +13,16 @@ import java.util.Set;
 @Table(name = "PRODUCT")
 public class Product implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @NotNull
+    private String name;
+
+    @NotNull
+    private String manufacturer;
+
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
@@ -31,15 +41,29 @@ public class Product implements Serializable {
     )
     private Set<SupplyChain> supplyChains = new HashSet<>();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    public Integer getId() {
+        return id;
+    }
 
-    @NotNull
-    private String description;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    @NotNull
-    private String manufacturer;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
     public Set<Region> getRegions() {
         return regions;
@@ -57,30 +81,6 @@ public class Product implements Serializable {
         this.supplyChains = supplyChains;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,5 +92,14 @@ public class Product implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                '}';
     }
 }

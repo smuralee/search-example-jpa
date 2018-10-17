@@ -1,6 +1,6 @@
 package com.search.model.view;
 
-import com.search.persistence.entities.Product;
+import com.search.model.domain.Item;
 import lombok.Value;
 
 import java.util.List;
@@ -12,6 +12,6 @@ import java.util.List;
  */
 @Value
 public class SearchResponse implements ViewModel {
-    private List<Product> products;
+    private List<Item> items;
     private Long totalCount;
 }

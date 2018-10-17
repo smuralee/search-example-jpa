@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(value = ProductController.class, secure = false)
-public class ProductControllerTest {
+@WebMvcTest(value = ItemController.class, secure = false)
+public class ItemControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

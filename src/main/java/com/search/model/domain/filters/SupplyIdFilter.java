@@ -11,12 +11,12 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
-public class SupplyChainIdFilter extends InCriteriaFilter<SupplyChain> {
+public class SupplyIdFilter extends InCriteriaFilter<SupplyChain> {
 
     private ViewModel request;
 
     @Override
     protected Predicate getInAttribute(Root<SupplyChain> root) {
-        return root.get(StringConstants.ID).in(((SearchRequest) request).getSupplyChainIds());
+        return root.get(StringConstants.ID).in(((SearchRequest) request).getSupplierIds());
     }
 }

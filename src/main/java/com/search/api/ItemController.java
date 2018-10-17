@@ -2,38 +2,19 @@ package com.search.api;
 
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
-import com.search.persistence.entities.Product;
-import com.search.persistence.repositories.ProductRepository;
 import com.search.services.Search;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
-public class ProductController {
-
-    @Autowired
-    private ProductRepository repository;
+public class ItemController {
 
     @Autowired
     private Search search;
-
-    /**
-     * <p>
-     * Returns all the products
-     * </p>
-     *
-     * @return the list of products
-     */
-    @GetMapping("/products")
-    public List<Product> getProducts() {
-        return this.repository.findAll();
-    }
 
     /**
      * <p>
