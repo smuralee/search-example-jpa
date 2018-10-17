@@ -1,7 +1,7 @@
 package com.search.services;
 
 import com.search.model.domain.Item;
-import com.search.model.domain.filters.chain.ProductFilterChain;
+import com.search.model.domain.filters.chain.ItemFilterChain;
 import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
@@ -56,7 +56,7 @@ public class SearchService implements Search {
                 .andCountPredicateListOf(countPredicates);
 
         // Applying the predicates
-        ProductFilterChain chain = new ProductFilterChain();
+        ItemFilterChain chain = new ItemFilterChain();
         chain.applyPredicates(predicateBuilder);
 
         // Fetch the predicates

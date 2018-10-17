@@ -10,10 +10,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * <p>
- * Applies the product id filter
+ * Applies the item id filter
  * </p>
  */
-public class ProductIdProcessor extends SearchCriteriaChain<Product> {
+public class ItemIdProcessor extends SearchCriteriaChain<Product> {
 
     @Override
     protected void applyPredicate(PredicateBuilder<Product> builder) {

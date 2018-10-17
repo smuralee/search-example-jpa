@@ -9,16 +9,16 @@ import com.search.persistence.entities.Product;
  * Configures the sequence of steps in the filter chain
  * </p>
  */
-public class ProductFilterChain {
+public class ItemFilterChain {
 
     private SearchCriteriaChain<Product> step1;
 
-    public ProductFilterChain() {
+    public ItemFilterChain() {
 
         // Initialize the steps
-        step1 = new ProductIdProcessor();
-        SearchCriteriaChain<Product> step2 = new ProductDescriptionProcessor();
-        SearchCriteriaChain<Product> step3 = new ProductManufacturerProcessor();
+        step1 = new ItemIdProcessor();
+        SearchCriteriaChain<Product> step2 = new ItemNameProcessor();
+        SearchCriteriaChain<Product> step3 = new ItemBrandProcessor();
 
         // Setting the filter chaining
         step1.setNextChain(step2);
