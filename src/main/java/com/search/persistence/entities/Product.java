@@ -14,16 +14,6 @@ import java.util.Set;
 @Data
 public class Product implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    @NotNull
-    private String description;
-
-    @NotNull
-    private String manufacturer;
-
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
@@ -32,7 +22,6 @@ public class Product implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "REGION_ID")}
     )
     Set<Region> regions = new HashSet<>();
-
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
@@ -41,5 +30,12 @@ public class Product implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "SUPPLY_CHAIN_ID")}
     )
     Set<SupplyChain> supplyChains = new HashSet<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @NotNull
+    private String description;
+    @NotNull
+    private String manufacturer;
 
 }
