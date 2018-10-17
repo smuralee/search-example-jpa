@@ -26,11 +26,11 @@ public class Product implements Serializable {
 
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL})
-            @JoinTable(
-                    name = "REGION_REF",
-                    joinColumns = {@JoinColumn(name = "PRODUCT_ID")},
-                    inverseJoinColumns = {@JoinColumn(name = "REGION_ID")}
-            )
+    @JoinTable(
+            name = "REGION_REF",
+            joinColumns = {@JoinColumn(name = "PRODUCT_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "REGION_ID")}
+    )
     Set<Region> regions = new HashSet<>();
 
     @JsonIgnore
