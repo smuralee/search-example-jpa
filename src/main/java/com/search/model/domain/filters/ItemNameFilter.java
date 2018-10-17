@@ -11,21 +11,21 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
-public class ProductDescriptionFilter extends LikeCriteriaFilter<Product> {
+public class ItemNameFilter extends LikeCriteriaFilter<Product> {
 
     private ViewModel request;
 
     @Override
     protected String getMatchPattern() {
-        final String productDescription = ((SearchRequest) this.request).getProductDescription();
+        final String itemName = ((SearchRequest) this.request).getItemName();
         StringBuilder stringBuilder = new StringBuilder(StringConstants.LIKE_PREFIX);
-        stringBuilder.append(productDescription.toLowerCase());
+        stringBuilder.append(itemName.toLowerCase());
         stringBuilder.append(StringConstants.LIKE_PREFIX);
         return stringBuilder.toString();
     }
 
     @Override
     protected Expression<String> getLikeAttribute(Root<Product> root) {
-        return root.get(StringConstants.DESCRIPTION);
+        return root.get(StringConstants.NAME);
     }
 }

@@ -13,13 +13,13 @@ import java.util.List;
 @Value
 public class SearchRequest implements ViewModel {
 
-    private Integer productId;
+    private Integer itemId;
 
-    private String productDescription;
+    private String itemName;
 
-    private String productManufacturer;
+    private String itemBrand;
 
-    private List<Integer> supplyChainIds;
+    private List<Integer> supplierIds;
 
     private List<Integer> regionIds;
 

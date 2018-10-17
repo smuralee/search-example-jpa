@@ -1,10 +1,12 @@
 package com.search.services;
 
+import com.search.model.domain.Item;
 import com.search.model.domain.filters.chain.ProductFilterChain;
 import com.search.model.domain.filters.core.PredicateBuilder;
 import com.search.model.view.SearchRequest;
 import com.search.model.view.SearchResponse;
 import com.search.persistence.entities.Product;
+import com.search.util.FunctionsUtil;
 import com.search.util.PrimitiveConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchService implements Search {
@@ -75,7 +78,12 @@ public class SearchService implements Search {
         entityQuery.setFirstResult((searchRequest.getPageNumber() - PrimitiveConstants.ONE) * searchRequest.getPageSize());
         entityQuery.setMaxResults(searchRequest.getPageSize());
         final List<Product> resultList = entityQuery.getResultList();
-        return new SearchResponse(resultList, totalCount);
+
+        // Converting to the domain object
+        final List<Item> items = resultList.stream()
+                .map(FunctionsUtil.getItem)
+                .collect(Collectors.toList());
+        return new SearchResponse(items, totalCount);
     }
 
 }

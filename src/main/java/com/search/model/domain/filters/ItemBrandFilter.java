@@ -11,15 +11,15 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 
 @AllArgsConstructor
-public class ProductManufacturerFilter extends LikeCriteriaFilter<Product> {
+public class ItemBrandFilter extends LikeCriteriaFilter<Product> {
 
     private ViewModel request;
 
     @Override
     protected String getMatchPattern() {
-        final String productManufacturer = ((SearchRequest) this.request).getProductManufacturer();
+        final String itemBrand = ((SearchRequest) this.request).getItemBrand();
         StringBuilder stringBuilder = new StringBuilder(StringConstants.LIKE_PREFIX);
-        stringBuilder.append(productManufacturer.toLowerCase());
+        stringBuilder.append(itemBrand.toLowerCase());
         stringBuilder.append(StringConstants.LIKE_PREFIX);
         return stringBuilder.toString();
     }
