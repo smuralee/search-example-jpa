@@ -13,18 +13,35 @@ import java.util.stream.Collectors;
 
 public final class FunctionsUtil {
 
+    /**
+     * <p>
+     * Convert the {@link Region} to {@link Location} object
+     * </p>
+     */
     private static Function<Region, Location> getLocation = region -> {
         Location location = new Location();
         location.setId(region.getId());
         location.setName(region.getName());
         return location;
     };
+
+    /**
+     * <p>
+     * Convert the {@link SupplyChain} to {@link Supplier} object
+     * </p>
+     */
     private static Function<SupplyChain, Supplier> getSupplier = supplyChain -> {
         Supplier supplier = new Supplier();
         supplier.setId(supplyChain.getId());
         supplier.setName(supplyChain.getName());
         return supplier;
     };
+
+    /**
+     * <p>
+     * Convert the {@link Product} to {@link Item} object
+     * </p>
+     */
     public static Function<Product, Item> getItem = product -> {
         Item item = new Item();
         item.setId(product.getId());
