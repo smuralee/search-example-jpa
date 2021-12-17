@@ -1,3 +1,1 @@
-# Search Example
-
-Search example using Spring JPA
+# Search example using Spring JPA
