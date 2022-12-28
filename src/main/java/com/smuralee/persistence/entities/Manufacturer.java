@@ -18,6 +18,7 @@ package com.smuralee.persistence.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -25,6 +26,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "MANUFACTURER")
 public class Manufacturer implements Serializable {
 
@@ -58,8 +61,9 @@ public class Manufacturer implements Serializable {
     @Column(name = "ZIP_CODE")
     private String zipCode;
 
-    @OneToMany(mappedBy = "manufacturer")
+    @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
     @OrderBy("productName ASC")
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Product> products = new HashSet<>();
 
     public Manufacturer() {
