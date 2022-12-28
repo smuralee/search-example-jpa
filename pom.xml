@@ -25,6 +25,7 @@
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
         <mockito.version>4.10.0</mockito.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <infinispan-version>14.0.4.Final</infinispan-version>
     </properties>
 
     <dependencies>
@@ -35,10 +36,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -65,6 +62,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Infinispan as second-level cache -->
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-hibernate-cache-v60</artifactId>
+            <version>${infinispan-version}</version>
+        </dependency>
 
         <!-- Mockito -->
         <dependency>

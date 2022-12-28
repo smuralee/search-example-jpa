@@ -89,12 +89,13 @@ public class SearchService implements Search {
 
         // Query execution - get total count
         final TypedQuery<Long> countQuery = this.entityManager.createQuery(countCriteriaQuery);
-        final Long totalCount = countQuery.getSingleResult();
+        final Long totalCount = countQuery.setHint("org.hibernate.cacheable", true).getSingleResult();
 
         // Query execution - get products with pagination
         final TypedQuery<Product> entityQuery = this.entityManager.createQuery(entityCriteriaQuery);
         entityQuery.setFirstResult((searchRequest.pageNumber() - PrimitiveConstants.ONE) * searchRequest.maxItems());
         entityQuery.setMaxResults(searchRequest.maxItems());
+        entityQuery.setHint("org.hibernate.cacheable", true);
         final List<Product> resultList = entityQuery.getResultList();
 
         // Converting to the domain object

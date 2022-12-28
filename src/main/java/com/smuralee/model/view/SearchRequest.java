@@ -28,5 +28,4 @@ public record SearchRequest(String productSkuCode,
                             String productManufacturer,
                             @NotNull Integer maxItems,
                             @NotNull Integer pageNumber) implements ViewModel {
-
 }
