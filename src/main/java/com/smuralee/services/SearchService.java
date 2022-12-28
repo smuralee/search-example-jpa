@@ -93,8 +93,8 @@ public class SearchService implements Search {
 
         // Query execution - get products with pagination
         final TypedQuery<Product> entityQuery = this.entityManager.createQuery(entityCriteriaQuery);
-        entityQuery.setFirstResult((searchRequest.pageNumber() - PrimitiveConstants.ONE) * searchRequest.pageSize());
-        entityQuery.setMaxResults(searchRequest.pageSize());
+        entityQuery.setFirstResult((searchRequest.pageNumber() - PrimitiveConstants.ONE) * searchRequest.maxItems());
+        entityQuery.setMaxResults(searchRequest.maxItems());
         final List<Product> resultList = entityQuery.getResultList();
 
         // Converting to the domain object

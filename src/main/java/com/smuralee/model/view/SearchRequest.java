@@ -16,6 +16,8 @@
 
 package com.smuralee.model.view;
 
+import jakarta.validation.constraints.NotNull;
+
 /**
  * <p>
  * Value object to hold the incoming request body for the smuralee
@@ -24,8 +26,7 @@ package com.smuralee.model.view;
 public record SearchRequest(String productSkuCode,
                             String productName,
                             String productManufacturer,
-                            Integer maxItems,
-                            Integer pageNumber,
-                            Integer pageSize) implements ViewModel {
+                            @NotNull Integer maxItems,
+                            @NotNull Integer pageNumber) implements ViewModel {
 
 }
