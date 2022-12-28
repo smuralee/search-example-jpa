@@ -1,0 +1,9 @@
+version: "3"
+services:
+  search-example-jpa:
+    container_name: search-example-jpa
+    build:
+      context: .
+    image: smuralee/search-example-jpa:latest
+    ports:
+      - "9001:8080"
