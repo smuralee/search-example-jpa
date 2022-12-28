@@ -20,7 +20,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "MANUFACTURER")
@@ -56,8 +58,9 @@ public class Manufacturer implements Serializable {
     @Column(name = "ZIP_CODE")
     private String zipCode;
 
-    @OneToOne(mappedBy = "manufacturer")
-    private Product product;
+    @OneToMany(mappedBy = "manufacturer")
+    @OrderBy("productName ASC")
+    private Set<Product> products = new HashSet<>();
 
     public Manufacturer() {
     }
@@ -68,7 +71,7 @@ public class Manufacturer implements Serializable {
         this.dunsIdentifier = dunsIdentifier;
     }
 
-    public Manufacturer(Integer id, String name, String dunsIdentifier, String addressLine1, String addressLine2, String city, String country, String zipCode, Product product) {
+    public Manufacturer(Integer id, String name, String dunsIdentifier, String addressLine1, String addressLine2, String city, String country, String zipCode, Set<Product> products) {
         this.id = id;
         this.name = name;
         this.dunsIdentifier = dunsIdentifier;
@@ -77,7 +80,7 @@ public class Manufacturer implements Serializable {
         this.city = city;
         this.country = country;
         this.zipCode = zipCode;
-        this.product = product;
+        this.products = products;
     }
 
     public Integer getId() {
@@ -144,12 +147,12 @@ public class Manufacturer implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public Product getProduct() {
-        return product;
+    public Set<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     @Override

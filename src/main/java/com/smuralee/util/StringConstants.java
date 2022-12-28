@@ -23,12 +23,7 @@ public final class StringConstants {
      */
     public static final String SUBCLASS_MUST_IMPLEMENT_METHOD = "Method to be implemented by sub-class";
     public static final String ROOT_CANNOT_BE_NULL = "Root entity cannot be null";
-    /**
-     * Entity attributes
-     */
-    public static final String PRODUCT_SKU_CODE = "productSkuCode";
-    public static final String PRODUCT_NAME = "productName";
-    public static final String PRODUCT_MANUFACTURER = "productManufacturer";
+
     /**
      * Common string literals
      */

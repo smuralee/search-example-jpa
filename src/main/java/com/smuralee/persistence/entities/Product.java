@@ -39,7 +39,7 @@ public class Product implements Serializable {
     @Column(name = "PRODUCT_SKU_CODE")
     private String productSkuCode;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "MANUFACTURER_ID")
     private Manufacturer manufacturer;
 

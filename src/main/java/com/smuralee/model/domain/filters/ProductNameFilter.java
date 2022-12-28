@@ -41,6 +41,6 @@ public class ProductNameFilter extends LikeCriteriaFilter<Product> {
 
     @Override
     protected Expression<String> getLikeAttribute(Root<Product> root) {
-        return root.get(StringConstants.PRODUCT_NAME);
+        return root.get("productName");
     }
 }

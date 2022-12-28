@@ -27,17 +27,17 @@ import com.smuralee.persistence.entities.Product;
  */
 public class ProductFilterChain {
 
-    private final SearchCriteriaChain<Product> defaultProcessor = new ProductSkuCodeProcessor();
+    private final SearchCriteriaChain<Product> productSkuCodeProcessor = new ProductSkuCodeProcessor();
 
     public ProductFilterChain() {
 
         // Initialize the stages
-        SearchCriteriaChain<Product> nameProcessor = new ProductNameProcessor();
-        SearchCriteriaChain<Product> brandProcessor = new ProductManufacturerProcessor();
+        SearchCriteriaChain<Product> productNameProcessor = new ProductNameProcessor();
+        SearchCriteriaChain<Product> productManufacturerProcessor = new ProductManufacturerProcessor();
 
         // Setting the filter chaining
-        defaultProcessor.setNextChain(nameProcessor);
-        nameProcessor.setNextChain(brandProcessor);
+        productSkuCodeProcessor.setNextChain(productNameProcessor);
+        productNameProcessor.setNextChain(productManufacturerProcessor);
     }
 
     /**
@@ -48,7 +48,7 @@ public class ProductFilterChain {
      * @param builder - Predicate builder
      */
     public void applyPredicates(PredicateBuilder<Product> builder) {
-        this.defaultProcessor.apply(builder);
+        this.productSkuCodeProcessor.apply(builder);
     }
 
 
