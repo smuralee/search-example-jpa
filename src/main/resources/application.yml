@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: none
     properties:
-      javax:
+      jakarta:
         persistence:
           sharedCache:
             mode: ENABLE_SELECTIVE
