@@ -5,7 +5,7 @@
 
     <groupId>com.smuralee</groupId>
     <artifactId>search-example-jpa</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>search-example-jpa</name>
@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,10 +22,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
-        <junit-jupiter.version>5.9.1</junit-jupiter.version>
-        <mockito.version>4.10.0</mockito.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <infinispan-version>14.0.4.Final</infinispan-version>
+        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <mockito.version>5.3.1</mockito.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <infinispan-version>14.0.10.Final</infinispan-version>
     </properties>
 
     <dependencies>
