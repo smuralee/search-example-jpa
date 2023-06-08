@@ -1,1 +1,3 @@
 # Search example using Spring JPA
+
+This is a search application demo using Hibernate and JPA with Spring framework. The API is exposed in `http://localhost:8080/search` as a `POST` method. The example invocation is available as [HTTP requests](./http-collections/post.http). The application uses the [H2 runtime embedded database](./src/main/resources/data.sql) and the same data is used for the HTTP requests.

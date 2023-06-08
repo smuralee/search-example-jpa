@@ -1,0 +1,39 @@
+# Payload structure
+
+#{
+#  "productSkuCode": "",
+#  "productName": "",
+#  "productManufacturer": "",
+#  "maxItems": 0,
+#  "pageNumber": 0
+#}
+
+### Search by productName
+POST http://localhost:8080/search
+Content-Type: application/json
+
+{
+  "productName": "Chair",
+  "maxItems": 100,
+  "pageNumber": 1
+}
+
+### Search by productSkuCode
+POST http://localhost:8080/search
+Content-Type: application/json
+
+{
+  "productSkuCode": "ABCE1235",
+  "maxItems": 100,
+  "pageNumber": 1
+}
+
+### Search by productManufacturer
+POST http://localhost:8080/search
+Content-Type: application/json
+
+{
+  "productManufacturer": "ACME",
+  "maxItems": 100,
+  "pageNumber": 1
+}
